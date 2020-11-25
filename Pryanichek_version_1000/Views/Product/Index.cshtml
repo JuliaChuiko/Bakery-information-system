@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<Product>
+
+@{
+
+    ViewData["Title"] = "Страница продавца";
+    
+    Layout = "~/Views/Shared/_AddLayout.cshtml";
+    // Layout = null;
+}
+
+<html>
+
+
+
+
+
+<body>
+    <h2 align="center" style="color: crimson"> Узнать цену изделия</h2>
+    <form action="/Product/FindProductPrice" method="get">
+
+        <input id="names" class="form-control" name="ProductName" type="text" value="Введите название изделия" />
+
+        <input align="center" type="submit" class="btn btn-danger" value="Поиск" />
+
+
+        <big><output style="color:#800080" name="result">@ViewData["Message"]</output> </big>
+    </form>
+
+    <h3 align="center" style="color:crimson">Изделия</h3>
+    <style>
+
+        div {
+            opacity: 0.9;
+        }
+    </style>
+
+    <hr />
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between" style="color:black">
+                    <h5 class="mb-1">@item.ProductName</h5>
+                    <big class="text-muted" style="color:red"><font color="crimson">@item.Price.ToString("c")</font></big>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+
+

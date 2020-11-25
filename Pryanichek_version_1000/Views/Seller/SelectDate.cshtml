@@ -1,0 +1,79 @@
+﻿@model Pryanichek_version_1000.Models.ClassOrder
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <h4 style="color: darkslategrey" align="center> Выберите дату</h4>
+        <div style="background-color: white" align="center">
+            <form action="/Seller/OrderWillBeForm" method="post">
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+
+                        <input type="date" id="Date" name="Date" min="2017-01-01">
+                        <span asp-validation-for="Date" style="color: crimson"></span>
+
+                    </div>
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+
+                        <select style="color: darkslategrey" class="selectpicker" data-style="btn-danger" name="CookNo">
+                            <option value="hide">--Кондитеры----</option>
+                            @foreach (var i in TempData["Bakers"] as List<ClassOrder>)
+                            {
+                                <option value="@i.CookNo">@i.CookName</option>
+
+                            }
+                        </select><label style="color:crimson">@ViewBag.Err</label>
+
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <button type="submit" class="btn btn-danger">Далее</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+
+        <script type="text/javascript">
+
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = String(today.getFullYear());
+            today = yyyy + '-' + mm + '-' + dd;
+
+            document.getElementById("Date").min = today;
+            document.getElementById("Date").max = '2021-12-31';
+        </script>
+    </section>
+</body>

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Страничка владельца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+<html>
+<head>
+    @*<script type="text/javascript">
+            window.PopStateEvent = history.go(1);
+        </script>*@
+</head>
+<body>
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Owner/Prodazi">Сумма продаж во всех пекарнях</a></li>
+                <li><a href="/Owner/Information">Информация о пекарне</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <div class="list-group" align="center">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                    <form action="/Owner/CurrentMothForAll" method="post">
+                        <button type="submit" class="btn btn-danger">За текущий месяц</button>
+                    </form>
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                    <form action="/Owner/YearForAll" method="post">
+                        <button type="submit" class="btn btn-danger">За текущий год</button>
+                    </form>
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                    <form action="/Owner/AllYearForAll" method="post">
+                        <button type="submit" class="btn btn-danger">За все года</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+</body>
+</html>

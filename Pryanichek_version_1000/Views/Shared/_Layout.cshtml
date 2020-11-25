@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pryanichek</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            background: url(https://images.wallpaperscraft.ru/image/listia_zelenyj_kusty_130214_1920x1080.jpg) center no-repeat;
+    </style>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .decor {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 30px;
+        }
+
+        .form-left-decoration,
+        .form-right-decoration {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background: #006400;
+            border-radius: 20px;
+        }
+
+        .form-left-decoration {
+            bottom: 60px;
+            left: -30px;
+        }
+
+        .form-right-decoration {
+            top: 60px;
+            right: -30px;
+        }
+
+            .form-left-decoration:before,
+            .form-left-decoration:after,
+            .form-right-decoration:before,
+            .form-right-decoration:after {
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 20px;
+                border-radius: 30px;
+                background: white;
+            }
+
+        .form-left-decoration:before {
+            top: -20px;
+        }
+
+        .form-left-decoration:after {
+            top: 20px;
+            left: 10px;
+        }
+
+        .form-right-decoration:before {
+            top: -20px;
+            right: 0;
+        }
+
+        .form-right-decoration:after {
+            top: 20px;
+            right: 10px;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 80px;
+            left: -55px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .form-inner {
+            padding: 50px;
+        }
+
+            .form-inner input,
+            .form-inner textarea {
+                display: block;
+                width: 100%;
+                padding: 0 20px;
+                margin-bottom: 10px;
+                background: #E9EFF6;
+                line-height: 40px;
+                border-width: 0;
+                border-radius: 20px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+                .form-inner input[type="submit"] {
+                    margin-top: 30px;
+                    background: #006400;
+                    border-bottom: 4px solid #006400;
+                    color: white;
+                    font-size: 14px;
+                }
+
+            .form-inner textarea {
+                resize: none;
+            }
+
+            .form-inner h3 {
+                margin-top: 0;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 24px;
+                color: #DC143C;
+            }
+ 
+            .header-h1 {
+            position: relative;
+            margin-bottom: .5rem;
+            text-align: center;
+            }
+
+            .header-h1 h1 {
+                display: inline-block;
+                background: #fff;
+                margin-bottom: 0;
+                font-size: 1.5rem;
+                text-transform: uppercase;
+                padding: .5rem 1.5rem;
+                border: .125rem solid #006400;
+                color: #006400;
+            }
+
+                .header-h1 h1::after {
+                    content: "";
+                    position: absolute;
+                    background: #3CB371;
+                    height: .125rem;
+                    left: 0;
+                    top: 50%;
+                    width: 100%;
+                    transform: translateY(-50%);
+                    z-index: -999;
+                }
+
+        .header-h1-dark h1 {
+            background: #006400;
+            color: #fff;
+        }
+    </style>
+</head>
+<body >
+   
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <!--<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Домашняя страница</a>-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Домашняя страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Signin">Вход в систему</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Pryanichek_version_1000 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Данные создатея</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+    
+
+    
+</body>
+</html>

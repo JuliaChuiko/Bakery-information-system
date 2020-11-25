@@ -1,0 +1,39 @@
+﻿@model Pryanichek_version_1000.Models.Answer
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+   
+    <section>
+        <h4>Желает ли клиент создать карточку?</h4>
+                <div class="form-left-decoration"></div>
+                <div class="form-right-decoration"></div>
+                <div class="circle"></div>
+                <div class="form-inner">
+
+                    <div>
+                        <form action="/Seller/ClientRegistration" width="600" method="get">
+                            <input type="hidden" name="MainAnswer" />
+                            <button type="submit" class="btn btn-success">Да</button>
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/Seller/CreateCheck" width="600" method="post">                          
+                                <input type="hidden" name="MainAnswer" />
+                                <button type="submit" class="btn btn-danger">Нет</button>
+                        </form>
+                    </div>
+                </div>
+
+</section>
+
+
+</body>

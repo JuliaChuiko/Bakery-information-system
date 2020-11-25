@@ -1,0 +1,34 @@
+﻿@model Pryanichek_version_1000.Models.Loginn
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+
+
+</body>
+</html>

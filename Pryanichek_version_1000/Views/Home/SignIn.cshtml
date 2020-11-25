@@ -1,0 +1,44 @@
+﻿@model Pryanichek_version_1000.Models.Loginn
+@{
+    ViewData["Title"] = "Домашняя страница";
+
+    // Layout = null;
+}
+    <html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+    
+
+    <body>
+
+        <div class="header-h1">
+            <h1 style="color:#3CB371">Пожалуйста, заполните форму....</h1>
+
+        </div>
+
+        <form action="/Home/Check_login" class="decor" method="POST">
+            <div class="form-left-decoration"></div>
+            <div class="form-right-decoration"></div>
+            <div class="circle"></div>
+            <div class="form-inner">
+                <div>
+                    <label style="color:crimson">@ViewBag.Message</label>
+                    <input align="center" type="text" name="Login" placeholder="Введите логин" autocomplete="off" />
+                    <span asp-validation-for="Login" style="color:crimson"></span>
+                </div>
+                <div>
+                    <input align="center" type="password" name="Password" autocomplete="off" placeholder="Введите пароль">
+                    <span asp-validation-for="Password" style="color:crimson"></span>
+                </div>
+                
+                <div>
+                    <input align="center" type="submit" class="btn btn-danger" value="Войти" />
+                </div>
+            </div>
+        </form>
+    </body>
+
+    </html>

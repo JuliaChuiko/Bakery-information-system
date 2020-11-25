@@ -1,0 +1,72 @@
+﻿@model Pryanichek_version_1000.Models.ClassPeriodReceipt
+
+@{
+    ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <h4 style="color: darkslategrey"> Выберите дату приема заказа:</h4>
+        <div style="background-color:white">
+            <form id="formm" action="/Baker/FindOrderByPeriod" method="post">
+                <div>
+                    <label align="center" style="color: darkslategrey">Дата начала: </label>
+                </div>
+                <div>
+                    <input type="date" id="StartDate" name="StartDate" min="2017-01-01">
+                    <span asp-validation-for="StartDate" style="color: crimson"></span>
+                </div>
+
+                <div>
+                    <label salign="center" tyle="color: darkslategrey">Дата конца: </label>
+                </div>
+                <div>
+                    <input type="date" id="EndDate" name="EndDate" min="2018-01-01">
+                    <span asp-validation-for="EndDate" style="color: crimson"></span>
+                </div>
+                <div>
+                    <input align="center" type="submit" class="btn btn-secondary" value="Поиск" onclick="MyCheck()" />
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = String(today.getFullYear());
+            today = yyyy + '-' + mm + '-' + dd;
+
+            document.getElementById("StartDate").max = today;
+            document.getElementById("EndDate").max = today;
+            function MyCheck() {
+                if (document.getElementById("StartDate").value > document.getElementById("EndDate").value) {
+                    alert("Дата конца не может предшествовать началу");
+                    document.getElementById("formm").action = "/Baker/Orders";
+                }
+            }
+
+        </script>
+    </section>
+</body>

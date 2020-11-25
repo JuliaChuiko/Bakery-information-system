@@ -1,0 +1,92 @@
+﻿@model Pryanichek_version_1000.Models.User
+@{
+    ViewData["Title"] = "Страница администратора";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<html> 
+
+
+
+
+<head>
+
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+
+<body>
+    <div class="header-h1">
+        <h1 style="color: darkslategrey">Добавить нового пользователя</h1>
+
+    </div>
+
+    <h4 align="center"  style="color: darkslategrey" font-family="Verdana">@ViewBag.Message</h4>
+    <form action="/Admin/Check_login" class="decor" method="POST">
+        <div class="form-left-decoration"></div>
+        <div class="form-right-decoration"></div>
+        <div class="circle"></div>
+        <div class="form-inner">
+
+            <div>
+                <input style="color: darkslategrey" align="center" type="text" name="FirstName" autocomplete="off" placeholder="Введите имя">
+                <span asp-validation-for="FirstName" style="color:crimson"></span>
+            </div>
+
+            <div>
+                <input style="color: darkslategrey"  align="center" type="text" name="LastName" autocomplete="off" placeholder="Введите фамилию">
+                <span asp-validation-for="LastName" style="color: crimson"></span>
+            </div>
+
+            <!-- <div>
+                        <label style="color:#FF7F50" align="center">Пример даты рождения: 2000-07-19</label>
+                    </div> <div>
+             <input align="center" type="text" name="DateOfBirth" autocomplete="off" placeholder="Введите дату рождения">
+            <span asp-validation-for="DateOfBirth" style="color:crimson"></span>
+             </div>-->
+            <div>
+                <label style="color: darkslategrey" align="center">Пример номера 099-876-23-22</label>
+            </div>
+            <div>
+                <input style="color: darkslategrey" align="center" type="text" name="TelNo" autocomplete="off" placeholder="Введите номер телефона">
+                <span asp-validation-for="TelNo" style="color:crimson"></span>
+            </div>
+            <div>
+                <input style="color:darkslategrey" align="center" type="text" name="Login" placeholder="Введите логин" autocomplete="off" />
+                <span asp-validation-for="Login" style="color:crimson"></span>   <!--autocomplete="off" - отключаем автозаполнение полей, подсказок не будет-->
+            </div>
+            <div>
+                <input style="color: darkslategrey" align="center" type="password" name="Password" autocomplete="off" placeholder="Введите пароль">
+                <span asp-validation-for="Password" style="color:crimson"></span>
+            </div>
+
+            <!--<div>
+                <input align="center" type="password" name="PasswordConfirm" autocomplete="off" placeholder="Повторите пароль">
+                <span asp-validation-for="PasswordConfirm" style="color:crimson"></span>
+            </div>-->
+
+
+            <div>
+                <select style="color:darkslategrey" class="selectpicker" data-val-required="Требуется поле Role." data-style="btn-danger" name="RoleName">
+                    <option value="hide">--Занимаемая позиция--</option>
+                    <option value="Администратор" rel="icon-temperature">Администратор</option>
+                    <option value="Пекарь">Пекарь</option>
+                    <option value="Кондитер">Кондитер</option>
+                    <option value="Продавец">Продавец-консультант</option>
+                    <option value="Директор">Директор</option>
+                </select>@Html.ValidationMessageFor(model => model.RoleName)
+
+                <!--<input align="center" type="rolename" name="RoleName" autocomplete="off" placeholder="Role Name"> <span style="color:crimson"> </span>-->
+            </div>
+
+
+            <div>
+                <input align="center" type="submit" class="btn btn-danger" value="Добавить аккаунт" />
+            </div>
+        </div>
+
+
+    </form>
+</body>
+</html>

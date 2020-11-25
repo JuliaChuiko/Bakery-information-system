@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Страница продавца";
+    // Layout = null;
+}
+<h3 align="center" style="color:crimson">Изделия</h3>
+<style>
+
+ div {
+	 opacity: 0.9;
+   }
+
+</style>
+
+<hr />
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+               <h5 class="mb-1">@item.ProductName</h5>
+                <big class="text-muted">@item.Price.ToString("c")</big>
+            </div>
+        </div>
+    }
+</div>

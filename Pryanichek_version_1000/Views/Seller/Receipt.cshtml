@@ -1,0 +1,58 @@
+﻿@model Pryanichek_version_1000.Models.ClasssReceipt
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);  
+    </script>
+</head>
+<body>
+      
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+               <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <h5 style="color: darkslategrey"> Выберите дату</h5>
+        <div style="background-color: white">
+            <form action="/Seller/FindReceipt" method="post">
+                <div>
+                    <input type="date" id="Date" name="Date" min="2017-01-01">
+                    <span asp-validation-for="Date" style="color: crimson"></span>
+                </div>
+                <div>
+                    <input align="center" type="submit" class="btn btn-secondary" value="Поиск" />
+                </div>
+                
+
+            </form>
+        </div>
+      
+        <script type="text/javascript">
+          
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = String(today.getFullYear());
+            today = yyyy + '-' + mm + '-' + dd;
+
+            document.getElementById("Date").max = today;
+        </script>
+    </section>
+    </body>

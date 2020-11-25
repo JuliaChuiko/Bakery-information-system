@@ -1,0 +1,79 @@
+﻿@model Pryanichek_version_1000.Models.NewOrder
+
+@{
+    ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section>
+        <form action="/Baker/OrderUpdate" method="post">
+            <div class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Номер заказа:</h6>
+                        <input type="text" name="OrderNo" readonly value="@Model.OrderNo">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Кем выполняется:</h6>
+                        <input name="FromPerson" type="text" readonly value="@Model.FromPerson">
+                    </div>
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Ожидаемая дата сдачи:</h6>
+                        <input name="EndDate" type="text" readonly value="@Model.EndDate">
+                    </div>
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Статус заказа:</h6>
+                        <select style="color:darkslategrey" class="selectpicker" data-style="btn-danger" name="Status">
+                            <option value="hide">--------</option>
+                            <option value="1">заказ готов</option>
+                        </select> <label style="color:crimson">@ViewBag.Message</label>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input type="hidden" name="OrderNo" value="@Model.OrderNo" />
+                        <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                <form action="/Baker/Products" method="post">
+                    <input type="hidden" name="ProductNo" value="@Model.OrderNo" />
+                    <button type="submit" class="btn btn-danger">Отменить изменения</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

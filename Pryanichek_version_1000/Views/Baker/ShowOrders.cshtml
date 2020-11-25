@@ -1,0 +1,64 @@
+﻿@model Pryanichek_version_1000.Models.NewOrder
+
+@{
+    ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+</div>
+    </aside>
+
+    <section>
+        <div style="background-color:white">
+            <table>
+                <tr>
+                    <td>Номер чека</td>
+                    <td>Продавец</td>
+                    <td>Получатель</td>
+                    <td>Дата приема и сдачи заказа</td>
+                    <td>Состояние заказа</td>
+                    <td>Продукт, кол-во (шт.)</td>
+                    <td>Заказ выполнил</td>
+                    <td>Сумма (грн)</td>
+
+                </tr>
+
+
+                @foreach (var i in TempData["Orders"] as List<NewOrder>)
+                {
+                    <tr>
+                        <td>@i.OrderNo</td>
+                        <td>@i.Cashier</td>
+                        <td>@i.ToPerson</td>
+                        <td>@i.StartDate   @i.EndDate</td>
+                        <td>@i.Status</td>
+                        <td>@i.ProductNameWithCount</td>
+                        <td>@i.FromPerson</td>
+                        <td>@i.Sum</td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+        </section>
+</body>

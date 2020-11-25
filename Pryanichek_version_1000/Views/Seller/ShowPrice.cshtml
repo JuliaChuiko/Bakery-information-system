@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+    <style>
+
+        /*div {
+            opacity: 0.8;
+        }*/
+    </style>
+    <div>
+       
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section style="background-color:white">
+
+
+        <h5 align="center" style="color: darkslategrey"> Узнать стоимость изделия</h5>
+        <form action="/Seller/FindProductPrice" method="get">
+
+            <input list="products" id="names" class="form-control" name="ProductName" autocomplete="off" placeholder="Введите название изделия" />
+            <datalist id="products">
+                @foreach (var item in Model)
+                {
+
+                    <option value=@item.ProductName></option>
+
+                }
+            </datalist>
+            <input align="center" type="submit" class="btn btn-secondary" value="Поиск" />
+
+        </form>
+
+
+        <div >
+            <ul>
+                @{
+                    foreach (var i in TempData["Prices"] as List<string>)
+                    {
+                        <li> @i</li>
+
+                    }
+                }
+            </ul>
+        </div>
+
+    </section>
+
+
+
+
+</body>
+</html>

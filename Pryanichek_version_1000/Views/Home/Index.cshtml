@@ -1,0 +1,21 @@
+﻿@model Pryanichek_version_1000.Models.User
+@{
+    ViewData["Title"] = "Домашняя страница";
+
+   // Layout = null;
+}
+    <html>
+    <head>
+        <script type="text/javascript">
+            window.PopStateEvent = history.go(1);
+        </script>
+        <div class="header-h1">
+
+            <h1 align="center" style="color:#3CB371">Добро пожаловать!</h1>
+        </div>
+        <h4 style="color:white" >@ViewBag.Message</h4>
+           
+          
+    </head>
+ 
+    </html>

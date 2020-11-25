@@ -1,0 +1,75 @@
+﻿@model Pryanichek_version_1000.Models.NewOrder
+
+@{
+     ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section>
+        <div style="background-color:white">
+            <h4 style="color:crimson" >@ViewBag.Message</h4>
+            <table>
+                <tr>
+                    <td>Номер заказа</td>
+                    <td>Продавец</td>
+                    <td>Получатель</td>
+                    <td>Ожидаемая дата сдачи</td>
+                    <td>Состояние заказа</td>
+                    <td>Продукт, кол-во (шт.)</td>
+                    <td>Кем заказ выполняется</td>
+                    @*<td>Сумма (грн)</td>*@
+                    <td></td>
+
+                </tr>
+
+
+                @foreach (var i in TempData["Orders2"] as List<NewOrder>)
+                    {
+            <form action="/Baker/ChangeOrder" method="post">
+                <tr>
+                   
+                    <td>@i.OrderNo</td>
+                    <td>@i.Cashier</td>
+                    <td>@i.ToPerson</td>
+                    <td>@i.EndDate</td>
+                    <td>@i.Status</td>
+                    <td>@i.ProductNameWithCount</td>
+                    <td>@i.FromPerson</td>
+                    @*<td>@i.Sum</td>*@
+                    <td>
+                        <input type="hidden" name="OrderNo" value="@i.OrderNo" />
+                        <button type="submit" class="btn btn-secondary">Изменить</button>
+
+                    </td>
+
+                </tr>
+            </form>
+                    }
+            </table>
+        </div>
+    </section>
+</body>

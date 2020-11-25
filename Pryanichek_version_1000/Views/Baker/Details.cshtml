@@ -1,0 +1,81 @@
+﻿
+@model Pryanichek_version_1000.Models.NewProduct
+
+@{
+    ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+
+        <div class="list-group">
+          
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Изделие: @Model.ProductName</h6>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Вид: @Model.SortName</h6>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Время приготовления: @Model.PreparingTime минут</h6>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Ингредиенты</h6>
+                    </div>
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        @foreach (var ingredient in TempData["Ingredients"] as List<string>)
+                        {
+                            <h6 class="mb-1">@ingredient</h6>
+                        }
+                    </div>
+                </div>
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">Рецепт: @Model.Recipe</h6>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <form action="/Baker/ChangeProduct" method="post">
+                            <input type="hidden" name="ProductNo" value="@Model.ProductNo" />
+                            <button type="submit" class="btn btn-danger">Изменить</button>
+                        </form>
+                    </div>
+                </div>
+            
+        </div>
+
+    </section>
+</body>
+</html>

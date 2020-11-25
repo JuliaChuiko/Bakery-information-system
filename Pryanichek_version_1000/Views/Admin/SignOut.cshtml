@@ -1,0 +1,29 @@
+﻿@model Pryanichek_version_1000.Models.User
+@{
+    ViewData["Title"] = "Страница администратора";
+
+    // Layout = null;
+}
+    <html>
+    <head>
+        <script type="text/javascript">
+            window.PopStateEvent = history.go(1);
+        </script>
+    </head>
+    <body>
+        <form action="/Admin/SignOut" class="decor" method="POST">
+            <div class="form-left-decoration"></div>
+            <div class="form-right-decoration"></div>
+            <div class="circle"></div>
+            <div class="form-inner">
+                
+                <div>
+                    <input align="center" type="submit" class="btn btn-danger" value="Sign out" />
+                </div>
+            </div>
+        </form>
+    </body>
+
+
+    </html>
+   

@@ -1,0 +1,65 @@
+﻿@model Pryanichek_version_1000.Models.Need
+
+@{
+    ViewData["Title"] = "Страничка пекаря";
+    Layout = "~/Views/Shared/_Baker_Layout.cshtml";
+}
+
+<html>
+
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Baker/Products">Список изделий</a></li>
+                <li><a href="/Baker/CurrentList">Текущие заказы</a></li>
+                <li><a href="/Baker/Orders">Выполненные заказы</a></li>
+                <li><a href="/Baker/AddProducts">Что нужно допечь?</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section>
+        <div style="background-color:white">
+            <h4 style="color:crimson">@ViewBag.Message</h4>
+            <table>
+                <tr>
+                    <td>Вид изделий</td>
+                    <td>Требуемое кол-во изделий на полке</td>
+                    <td>Сколько изделий не хватает</td>
+                    <td></td> 
+
+                </tr>
+
+
+                @foreach (var i in TempData["Needs"] as List<Need>)
+                {
+                    <form action="/Baker/UpdateNeeds" method="post">
+                        <tr>
+
+                            <td id="SortName">@i.SortName</td>
+                            <td id="MaxCount">@i.MaxCount</td>
+                            <td id="NeedCount">@i.NeedCount</td>   
+                            <td>
+                                <input type="hidden" name="SortNo" value="@i.SortNo" />
+                                <button type="submit" class="btn btn-secondary">Допечь</button>
+
+                            </td>
+
+                        </tr>
+                    </form>
+                }
+            </table>
+        </div>
+    </section>
+</body>

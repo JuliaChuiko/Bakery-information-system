@@ -1,0 +1,47 @@
+﻿@model Pryanichek_version_1000.Models.ClientRegistration
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+<html>
+<head>
+
+</head>
+<body>
+    <div class="header-h1">
+        <h1 style="color: darkslategrey">Новый клиент</h1>
+
+    </div>
+
+    <h4 align="center" style="color: darkslategrey" font-family="Verdana">@ViewBag.Message</h4>
+     <form action="/Seller/Register" class="decor" method="POST">
+         <div class="form-left-decoration"></div>
+         <div class="form-right-decoration"></div>
+         <div class="circle"></div>
+         <div class="form-inner">
+
+             <div>
+                 <input style="color: darkslategrey" align="center" type="text" name="FirstName" autocomplete="off" placeholder="Введите имя">
+                 <span asp-validation-for="FirstName" style="color:crimson"></span>
+             </div>
+
+             <div>
+                 <input style="color: darkslategrey" align="center" type="text" name="LastName" autocomplete="off" placeholder="Введите фамилию">
+                 <span asp-validation-for="LastName" style="color: crimson"></span>
+             </div>
+             <div>
+                 <label style="color: darkslategrey" align="center">Пример номера 099-876-23-22</label>
+             </div>
+
+             <div>
+                 <input style="color: darkslategrey" align="center" type="text" name="TelNo" autocomplete="off" placeholder="Введите номер телефона">
+                 <span asp-validation-for="TelNo" style="color:crimson"></span>
+             </div>
+             <div>
+                 <button type="submit" class="btn btn-danger">Зарегистрировать</button>
+             </div>
+
+</form>
+</body>
+</html>

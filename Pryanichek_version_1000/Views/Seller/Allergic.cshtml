@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <div>
+    </div>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section style="background-color:white">
+
+
+        <h5 align="center" style="color: darkslategrey"> Аллергенные компоненты в изделии </h5>
+        <form action="/Seller/FindAllergicIngredient" method="get" class="decor">
+            <div>
+                <select style="color: darkslategrey" class="selectpicker" data-val-required="* Поле является обязательным" data-style="btn-danger" name="ProductName">
+                    <option value="hide">--Изделия----</option>
+                    @foreach (var item in Model)
+                    {
+
+                        <option value=@item.ProductName>@item.ProductName</option>
+
+                    }
+                </select>
+            </div>
+            <div>
+                <input align="center" type="submit" class="btn btn-secondary" value="Поиск" />
+            </div>
+
+
+        </form>
+        </section>
+</body>

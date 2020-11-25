@@ -1,0 +1,93 @@
+﻿@model Pryanichek_version_1000.Models.Person
+
+@{
+    ViewData["Title"] = "Страничка владельца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Owner/Prodazi">Сумма продаж во всех пекарнях</a></li>
+                <li><a href="/Owner/Information">Информация о пекарне</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <form action="/Owner/Staff" method="get">
+            <div class="list-group" align="center">
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.Name">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.DateOfBirth">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.Sex">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.TelNo">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.PositionName">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input name="FromPerson" type="text" readonly value="@Model.Salary">
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1" style="color:crimson">Статус: @ViewBag.Err</h6>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <input type="radio" name="IsFired" value="Работает" />Работает<br />
+                        <input type="radio" name="IsFired" value="Уволен" />Уволен<br />
+                    </div>
+                </div>
+               
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+
+                        <input type="hidden" name="StaffNo" value="@Model.StaffNo" />
+                        <button type="submit" class="btn btn-success">Сохранить изменения</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                <form action="/Owner/Information">
+                    <input type="hidden" name="StaffNo" value="@Model.StaffNo" />
+                    <button type="submit" class="btn btn-danger">Отменить изменения</button>
+                </form>
+            </div>
+        </div>
+
+       
+    </section>
+</body>
+</html>

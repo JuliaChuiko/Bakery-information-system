@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+        <div width="400" style="background-color:white">
+
+            <table style="text-align:center">
+                <thead>
+                    <tr>
+                        <td colspan="5" style="font-weight:bold; color:crimson; text-align:center; font-size:16px">Новый чек</td>
+                    </tr>
+                    
+                    <tr>
+
+                        <td>Изделие</td>
+                        <td>Количество</td>
+                        <td>Стоимость</td>
+                        <td></td>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var v in TempData["ListInReceipt"] as List<Item>)
+                    {
+                        <tr>
+                            <td>@v.ProductName <label style="color:crimson">@v.Message</label></td>
+                            <td>@v.count </td>
+                            <td>@v.Price </td>
+                            <td>
+                                <form action="/Seller/RemoveFromCard" method="post">
+                                    <input type="hidden" name="ProductNo" value="@v.ProductNo" />
+                                    <button type="submit" class="btn btn-danger">Отменить изделие</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="5" style="font-weight:normal; color:crimson; text-align:center; font-size:14px">
+                            @ViewBag.Message
+                        </td>
+                    </tr>
+                    <tr>
+                        <form action="/Seller/Save" width="600" method="post">
+                            <td colspan="4" style="text-align:center">
+                                <input type="hidden" name="ProductNo" />
+                                <button type="submit" class="btn btn-success">Сохранить чек</button> <label style="color:crimson">@ViewBag.Err</label>
+                            </td>
+                        </form>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div>
+
+        </div>
+
+        <div width="600" style="background-color:white">
+
+            <table align="center">
+                <thead>
+                    <tr>
+                        <td>Изделие</td>
+                        <td>Цена</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form action="/Seller/AddToCard" method="get">
+                        @foreach (var i in Model)
+                        {
+                            <tr>
+                                <td>@i.ProductName</td>
+                                <td>@i.Price.ToString("c")</td>
+                                <form action="/Seller/AddToCard" width="600" method="get">
+                                    <td>
+                                        <input type="hidden" name="ProductNo" value="@i.ProductNo" />
+                                        <button type="submit" class="btn btn-secondary">Добавить в чек</button>
+                                    </td>
+                                </form>
+                            </tr>
+
+                        }
+                    </form>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="/Seller/ComeBack" method="get">
+                                <button type="submit" class="btn btn-danger">Отменить действие</button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </section>
+
+
+</body>

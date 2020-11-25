@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pryanichek</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            background: url(https://images.wallpaperscraft.ru/image/koloski_pshenitsa_pole_146223_1920x1080.jpg) center no-repeat;
+
+        }
+/* внешние границы таблицы серого цвета толщиной 1px */
+table {border: 1px solid grey;} 
+/* границы ячеек первого ряда таблицы */
+th {border: 1px solid grey;}
+/* границы ячеек тела таблицы */
+td {border: 1px solid grey;}
+section {
+  float: right;
+   margin: 0 1.5%;
+   width: 63%;
+}
+        aside {
+            float: left;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .widget {
+            padding: 20px;
+            background: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .widget-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color:#FF8C00;
+            font-size: 16px;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            border-left: 2px solid #b99d61;
+        }
+.widget-list {
+  padding: 0;
+  list-style: none;
+}
+.widget-list a:before {
+  content: "\2014";
+  margin-right: 14px;
+}
+        .widget-list a {
+            text-decoration: none;
+            outline: none;
+            display: block;
+            padding: 6px 0;
+            letter-spacing: 1px;
+            font-weight: 100;
+            color: #444;
+            transition: .3s linear;
+        }
+.widget-list a:hover {color:#FF8C00;}
+.new-asside{
+           float: right;
+            margin: 1.5 0%;
+            width: 10%;
+}
+ .decor {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 30px;
+        }
+
+        .form-left-decoration,
+        .form-right-decoration {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background: #808080;
+            border-radius: 20px;
+        }
+
+        .form-left-decoration {
+            bottom: 60px;
+            left: -30px;
+        }
+
+        .form-right-decoration {
+            top: 60px;
+            right: -30px;
+        }
+
+            .form-left-decoration:before,
+            .form-left-decoration:after,
+            .form-right-decoration:before,
+            .form-right-decoration:after {
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 20px;
+                border-radius: 30px;
+                background: white;
+            }
+
+        .form-left-decoration:before {
+            top: -20px;
+        }
+
+        .form-left-decoration:after {
+            top: 20px;
+            left: 10px;
+        }
+
+        .form-right-decoration:before {
+            top: -20px;
+            right: 0;
+        }
+
+        .form-right-decoration:after {
+            top: 20px;
+            right: 10px;
+        }
+
+        .circle {
+            position: absolute;
+            bottom: 80px;
+            left: -55px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .form-inner {
+            padding: 50px;
+        }
+
+            .form-inner input,
+            .form-inner textarea {
+                display: block;
+                width: 100%;
+                padding: 0 20px;
+                margin-bottom: 10px;
+                background: #E9EFF6;
+                line-height: 40px;
+                border-width: 0;
+                border-radius: 20px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+                .form-inner input[type="submit"] {
+                    margin-top: 30px;
+                    background: #808080;
+                    border-bottom: 4px solid #808080;
+                    color: white;
+                    font-size: 14px;
+                }
+
+            .form-inner textarea {
+                resize: none;
+            }
+
+            .form-inner h3 {
+                margin-top: 0;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                font-size: 24px;
+                color: darkslategrey;
+            }
+               .header-h1 {
+            position: relative;
+            margin-bottom: .5rem;
+            text-align: center;
+            }
+
+                .header-h1 h1 {
+                    display: inline-block;
+                    background: #fff;
+                    margin-bottom: 0;
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    padding: .5rem 1.5rem;
+                    border: .125rem solid darkslategrey;
+                    color: darkslategrey;
+                }
+
+                .header-h1 h1::after {
+                    content: "";
+                    position: absolute;
+                    background: darkslategrey;
+                    height: .125rem;
+                    left: 0;
+                    top: 50%;
+                    width: 100%;
+                    transform: translateY(-50%);
+                    z-index: -999;
+                }
+
+        .header-h1-dark h1 {
+            background: #4682B4;
+            color: #fff;
+        }
+    </style>
+    
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Pryanichek</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="Index">Домашняя страница</a> <!--сделать ссылку на домашнюю стр в зависимости от пользователя-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="SignOut">Выйти из системы</a> <!--сделать ссылку на домашнюю стр в зависимости от пользователя-->
+                        </li>
+                        <li class="nav-item">
+                            <!--      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Signout">Sign Out</a>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Pryanichek_version_1000 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+  
+
+</body>
+</html>

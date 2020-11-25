@@ -1,0 +1,65 @@
+﻿@model Pryanichek_version_1000.Models.ClassSort
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+    <div>
+    </div>
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <section>
+
+
+        <form action="/Seller/SortList" method ="get">
+
+            <select style="color: darkslategrey; font-size:16px; font-family:'Roboto', sans-serif" class="selectpicker" data-val-required="* Поле является обязательным" data-style="btn-danger" name="NameSort">
+                <option value="hide">--Отсортировать----</option>
+                <option value="1" rel="icon-temperature">По возрастанию цен</option>
+                <option value="2">По убыванию цен</option>
+                <option value="3">По алфавиту</option>
+            </select>@Html.ValidationMessageFor(model => model.NameSort)
+
+            <input align="center" type="submit" class="btn btn-secondary" value="Применить" />
+            <label style="color:  darkslategrey">@ViewBag.Error</label>
+        </form>
+
+        <div class="list-group">
+            @foreach (var i in TempData["Sort"] as List<Product>)
+            {
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between" style="color: #444; font-family: 'Roboto', sans-serif; font-size: 16px">
+                        <h6 class="mb-1">@i.ProductName</h6>
+                        <big class="text-muted" style="color:darkred"><font color="crimson">@i.Price.ToString("c")</font></big>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+
+
+    </section>
+
+</body>
+</html>

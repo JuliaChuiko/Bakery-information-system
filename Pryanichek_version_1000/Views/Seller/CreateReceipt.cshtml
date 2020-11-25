@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClassClient>
+@{
+    ViewData["Title"] = "Страничка продавца";
+    Layout = "~/Views/Shared/_New_Layout2.cshtml";
+}
+
+<html>
+<head>
+    <script type="text/javascript">
+        window.PopStateEvent = history.go(1);
+    </script>
+</head>
+<body>
+
+    <aside>
+        <div class="widget">
+            <h3 class="widget-title">Быстрый поиск</h3>
+            <ul class="widget-list">
+                <li><a href="/Seller/Price">Стоимость изделия</a></li>
+                <li><a href="/Seller/ProductList">Ассортимент</a></li>
+                <li><a href="/Seller/NewOrder">Изделие под заказ</a></li>
+                <li><a href="/Seller/Allergic">Определить аллегренные компоненты в изделии</a></li>
+                <li><a href="/Seller/CreateCheck">Добавить чек</a></li>
+                <li><a href="/Seller/Receipts"> Просмотреть список чеков за определенную дату</a></li>
+                <li><a href="/Seller/ReceiptPeriod"> Просмотреть список чеков за период</a></li>
+            </ul>
+        </div>
+    </aside>
+    <section>
+         
+            <div width="800" style="background-color:white">
+                <table >
+                    <thead>
+                        <tr>
+                            
+                            <td>Имя и фамилия</td>
+                            <td>Номер телефона</td>
+                            <td>Кол-во визитов сети</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.ClientName</td>
+                                    <td>@i.TelNo</td>
+                                    <td>@i.VisitsNumbers</td>
+                                    <td>
+                                        <form action="/Seller/Create" method="post">
+                                            <input type="hidden" name="Identifyier" value="@i.Identifyier" />
+                                            <button type="submit" class="btn btn-secondary">Добавить чек </button>
+                                            </form>
+                                    </td>
+                                </tr>
+                            }
+                        
+                        </tbody>
+
+
+                </table>
+            </div>
+      
+    </section>
+</body>
